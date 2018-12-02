@@ -1,0 +1,22 @@
+class Solution {
+public:
+    vector<string> findAndReplacePattern(vector<string>& words, string pattern) {
+         List<String> ans = new ArrayList<>();
+        for (int i=0; i < words.length; i++){
+            Map<String,String> comp = new HashMap<>();
+            for (int j=0; j < pattern.length(); j++){
+                String a = pattern.substring(j,j+1);
+                String b = words[i].substring(j,j+1);
+                if (comp.containsKey(a)){
+                    String jug = comp.get(a);
+                    if (jug.equals(b) == false) break;
+                }
+                else if (comp.containsValue(b)) break;
+                else comp.put(a,b);
+            }
+            if (j==pattern.length()) ans.add(words[i]);
+        }
+        return ans;
+    }
+    }
+};
